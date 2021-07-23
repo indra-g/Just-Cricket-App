@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "765636931469",
+    "project_id": "justcricket-f826a",
+    "storage_bucket": "justcricket-f826a.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:765636931469:android:029f2d25bb9828a08c17c4",
+        "android_client_info": {
+          "package_name": "com.indrashekar.justcricket"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "765636931469-43c2nnk4474pmte5k91n77h5rhkdhnmt.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyD0BYN6CuuAt5Vy3uqoI8rJM_jwOYzqrHo"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "765636931469-43c2nnk4474pmte5k91n77h5rhkdhnmt.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
