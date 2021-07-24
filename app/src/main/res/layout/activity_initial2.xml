@@ -4,35 +4,36 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".LoginActivity">
+    tools:context=".InitialActivity">
 
     <ImageView
-        android:id="@+id/loginimg"
+        android:id="@+id/initialimg"
         android:layout_width="150dp"
         android:layout_height="150dp"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="20dp"
-        app:srcCompat="@drawable/loginimg" />
+        app:srcCompat="@drawable/initialimg" />
 
     <TextView
-        android:id="@+id/textview123"
-        android:layout_width="wrap_content"
+        android:id="@+id/initial_txt"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@id/loginimg"
+        android:layout_below="@id/initialimg"
         android:layout_marginStart="30dp"
         android:layout_marginLeft="30dp"
         android:layout_marginTop="20dp"
-        android:layout_marginEnd="10dp"
-        android:fontFamily="sans-serif-condensed"
+        android:layout_marginEnd="30dp"
         android:layout_marginRight="10dp"
-        android:text="Welcome Back "
+        android:gravity="center"
+        android:fontFamily="sans-serif-condensed"
+        android:text="Let us know about you"
         android:textColor="#005EFF"
-        android:textSize="40sp"
+        android:textSize="34sp"
         android:textStyle="bold" />
 
     <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/email_edittxt1"
-        android:layout_below="@+id/textview123"
+        android:id="@+id/name_edittext1"
+        android:layout_below="@+id/initial_txt"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="20dp"
@@ -44,102 +45,96 @@
         app:boxStrokeColor="#005EFF"
         app:hintTextColor="#005EFF">
         <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/email_edittxt11"
+            android:id="@+id/name_edittext12"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="Email"
             android:fontFamily="sans-serif"
-            android:inputType="textEmailAddress"
+            android:hint="Name"
+            android:inputType="text"
             android:textCursorDrawable="@drawable/color_cursor"
             >
         </com.google.android.material.textfield.TextInputEditText>
     </com.google.android.material.textfield.TextInputLayout>
 
     <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/pass_edittxt1"
+        android:id="@+id/nationality_edittext"
+        android:layout_below="@+id/name_edittext1"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/email_edittxt1"
-        android:layout_marginStart="30dp"
         android:layout_marginTop="10dp"
         android:layout_marginEnd="30dp"
+        android:layout_marginStart="30dp"
         android:layout_marginRight="30dp"
         app:boxCornerRadiusTopEnd="0dp"
         app:boxCornerRadiusTopStart="0dp"
         app:boxStrokeColor="#005EFF"
-        app:endIconTint="#005EFF"
-        app:hintTextColor="#005EFF"
-        app:startIconTint="#005EFF">
-
+        app:hintTextColor="#005EFF">
         <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/pass_edittxt11"
+            android:id="@+id/nationality_edittext1"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="Password"
             android:fontFamily="sans-serif"
-            android:inputType="textPassword"
-            android:textCursorDrawable="@drawable/color_cursor"></com.google.android.material.textfield.TextInputEditText>
+            android:hint="Nationality"
+            android:inputType="text"
+            android:textCursorDrawable="@drawable/color_cursor"
+            >
+        </com.google.android.material.textfield.TextInputEditText>
     </com.google.android.material.textfield.TextInputLayout>
 
-    <TextView
-        android:id="@+id/forget_pass"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/pass_edittxt1"
-        android:layout_alignParentEnd="true"
-        android:layout_marginTop="10dp"
-        android:layout_marginEnd="30dp"
-        android:textColor="@color/black"
-        android:fontFamily="sans-serif"
-        android:text="Forgot Password?"
-        android:textStyle="bold"
-        android:layout_alignParentRight="true"
-        android:layout_marginRight="30dp" />
-
-    <com.google.android.material.button.MaterialButton
-        android:id="@+id/login_btn1"
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/role_edittext"
+        android:layout_below="@+id/nationality_edittext"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/forget_pass"
         android:layout_marginTop="10dp"
+        android:layout_marginEnd="30dp"
+        android:layout_marginStart="30dp"
+        android:layout_marginRight="30dp"
+        app:boxCornerRadiusTopEnd="0dp"
+        app:boxCornerRadiusTopStart="0dp"
+        app:boxStrokeColor="#005EFF"
+        app:hintTextColor="#005EFF">
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/role_edittext1"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:fontFamily="sans-serif"
+            android:hint="Role Type"
+            android:inputType="text"
+            android:textCursorDrawable="@drawable/color_cursor"
+            >
+        </com.google.android.material.textfield.TextInputEditText>
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <CheckBox
+        android:id="@+id/covidtest1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/role_edittext"
+        android:layout_marginStart="30dp"
+        android:layout_marginLeft="30dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginEnd="30dp"
+        android:layout_marginRight="30dp"
+        android:text="Have any history of Covid-19?"
+        android:fontFamily="sans-serif"
+        android:textColor="@color/black"
+        app:buttonTint="#005EFF" />
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/getstarted_btn"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/covidtest1"
         android:layout_marginStart="30dp"
         android:layout_marginEnd="30dp"
         android:layout_marginBottom="5dp"
         android:backgroundTint="#005EFF"
-        android:text="Log In"
+        android:text="Get Started"
         android:fontFamily="sans-serif"
         android:textAllCaps="false"
         android:textColor="@color/white"
         android:textSize="16dp"
         app:cornerRadius="20dp" />
 
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/login_btn1"
-        android:layout_marginStart="30dp"
-        android:layout_marginLeft="30dp"
-        android:layout_marginEnd="30dp"
-        android:layout_marginRight="30dp"
-        android:gravity="center"
-        android:orientation="horizontal">
-
-        <TextView
-            android:id="@+id/noacc_txt"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:fontFamily="sans-serif"
-            android:textColor="@color/black"
-            android:text="No account?  " />
-
-        <TextView
-            android:id="@+id/signup_txt"
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent"
-            android:text="Sign Up"
-            android:fontFamily="sans-serif"
-            android:textColor="@color/black"
-            android:textStyle="bold" />
-
-    </LinearLayout>
 </RelativeLayout>

@@ -4,88 +4,113 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".SignUpActivity">
+    tools:context=".InitialActivity">
 
     <ImageView
-        android:id="@+id/signup"
+        android:id="@+id/initialimg"
         android:layout_width="150dp"
         android:layout_height="150dp"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="20dp"
-        app:srcCompat="@drawable/signupimg" />
+        app:srcCompat="@drawable/initialimg" />
 
     <TextView
-        android:id="@+id/textView3"
-        android:layout_width="wrap_content"
+        android:id="@+id/initial_txt"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@id/signup"
+        android:layout_below="@id/initialimg"
         android:layout_marginStart="30dp"
         android:layout_marginLeft="30dp"
         android:layout_marginTop="20dp"
-        android:layout_marginEnd="10dp"
+        android:layout_marginEnd="30dp"
         android:layout_marginRight="10dp"
+        android:gravity="center"
         android:fontFamily="sans-serif-condensed"
-        android:text="Get Started "
+        android:text="Let us know about you"
         android:textColor="#005EFF"
-        android:textSize="40sp"
+        android:textSize="34sp"
         android:textStyle="bold" />
 
     <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/name_edittxt"
+        android:id="@+id/name_edittext"
+        android:layout_below="@+id/initial_txt"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/textView3"
-        android:layout_marginStart="30dp"
         android:layout_marginTop="20dp"
         android:layout_marginEnd="30dp"
+        android:layout_marginStart="30dp"
         android:layout_marginRight="30dp"
         app:boxCornerRadiusTopEnd="0dp"
         app:boxCornerRadiusTopStart="0dp"
         app:boxStrokeColor="#005EFF"
         app:hintTextColor="#005EFF">
-
         <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/name_edittxt1"
+            android:id="@+id/name_edittext1"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
+            android:layout_height="wrap_content"
             android:fontFamily="sans-serif"
             android:hint="Name"
             android:inputType="text"
-            android:textCursorDrawable="@drawable/color_cursor">
-
-        </com.google.android.material.textfield.TextInputEditText>
-    </com.google.android.material.textfield.TextInputLayout>
-
-    <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/email_edittxt"
-        android:layout_below="@+id/name_edittxt"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="10dp"
-        android:layout_marginEnd="30dp"
-        android:layout_marginStart="30dp"
-        android:layout_marginRight="30dp"
-        app:boxCornerRadiusTopEnd="0dp"
-        app:boxCornerRadiusTopStart="0dp"
-        app:boxStrokeColor="#005EFF"
-        app:hintTextColor="#005EFF">
-        <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/email_edittxt1"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:hint="Email"
-            android:fontFamily="sans-serif"
-            android:inputType="textEmailAddress"
             android:textCursorDrawable="@drawable/color_cursor"
             >
         </com.google.android.material.textfield.TextInputEditText>
     </com.google.android.material.textfield.TextInputLayout>
 
     <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/pass_edittxt"
+        android:id="@+id/nationality_edittext"
+        android:layout_below="@+id/name_edittext"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/email_edittxt"
+        android:layout_marginTop="10dp"
+        android:layout_marginEnd="30dp"
+        android:layout_marginStart="30dp"
+        android:layout_marginRight="30dp"
+        app:boxCornerRadiusTopEnd="0dp"
+        app:boxCornerRadiusTopStart="0dp"
+        app:boxStrokeColor="#005EFF"
+        app:hintTextColor="#005EFF">
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/nationality_edittext1"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:fontFamily="sans-serif"
+            android:hint="Nationality"
+            android:inputType="text"
+            android:textCursorDrawable="@drawable/color_cursor"
+            >
+        </com.google.android.material.textfield.TextInputEditText>
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/tplay_edittext"
+        android:layout_below="@+id/nationality_edittext"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:layout_marginEnd="30dp"
+        android:layout_marginStart="30dp"
+        android:layout_marginRight="30dp"
+        app:boxCornerRadiusTopEnd="0dp"
+        app:boxCornerRadiusTopStart="0dp"
+        app:boxStrokeColor="#005EFF"
+        app:hintTextColor="#005EFF">
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/tplay_edittext1"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:fontFamily="sans-serif"
+            android:hint="Type of play"
+            android:inputType="text"
+            android:textCursorDrawable="@drawable/color_cursor"
+            >
+        </com.google.android.material.textfield.TextInputEditText>
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/teamname_edittext"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/tplay_edittext"
         android:layout_marginStart="30dp"
         android:layout_marginTop="10dp"
         android:layout_marginEnd="30dp"
@@ -93,95 +118,49 @@
         app:boxCornerRadiusTopEnd="0dp"
         app:boxCornerRadiusTopStart="0dp"
         app:boxStrokeColor="#005EFF"
-        app:endIconTint="#005EFF"
-        app:hintTextColor="#005EFF"
-        app:startIconTint="#005EFF">
+        app:hintTextColor="#005EFF">
 
         <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/pass_edittxt1"
+            android:id="@+id/teamname_edittext1"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="Password"
             android:fontFamily="sans-serif"
-            android:inputType="textPassword"
-            android:textCursorDrawable="@drawable/color_cursor"></com.google.android.material.textfield.TextInputEditText>
+            android:hint="Team name (Ex:RCB)"
+            android:inputType="text"
+            android:textCursorDrawable="@drawable/color_cursor">
+
+        </com.google.android.material.textfield.TextInputEditText>
     </com.google.android.material.textfield.TextInputLayout>
 
-    <RadioGroup
-        android:id="@+id/role"
-        android:layout_width="match_parent"
+    <CheckBox
+        android:id="@+id/covidtest"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@id/pass_edittxt"
+        android:layout_below="@id/teamname_edittext"
         android:layout_marginStart="30dp"
         android:layout_marginLeft="30dp"
         android:layout_marginTop="10dp"
         android:layout_marginEnd="30dp"
-        android:layout_marginRight="30dp">
-
-        <RadioButton
-            android:id="@+id/radioButton"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Team Player"
-            android:fontFamily="sans-serif"
-            android:textSize="16sp"
-            app:buttonTint="#005EFF" />
-
-        <RadioButton
-            android:id="@+id/radioButton2"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Officials"
-            android:fontFamily="sans-serif"
-            android:textSize="16sp"
-            app:buttonTint="#005EFF" />
-    </RadioGroup>
+        android:layout_marginRight="30dp"
+        android:text="Have any history of Covid-19?"
+        android:fontFamily="sans-serif"
+        android:textColor="@color/black"
+        app:buttonTint="#005EFF" />
 
     <com.google.android.material.button.MaterialButton
-        android:id="@+id/signup_btn"
+        android:id="@+id/register_btn"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/role"
+        android:layout_below="@+id/covidtest"
         android:layout_marginStart="30dp"
         android:layout_marginEnd="30dp"
         android:layout_marginBottom="5dp"
         android:backgroundTint="#005EFF"
-        android:text="Sign Up"
+        android:text="Get Started"
         android:fontFamily="sans-serif"
         android:textAllCaps="false"
         android:textColor="@color/white"
         android:textSize="16dp"
         app:cornerRadius="20dp" />
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/signup_btn"
-        android:layout_marginStart="30dp"
-        android:layout_marginLeft="30dp"
-        android:layout_marginEnd="30dp"
-        android:layout_marginRight="30dp"
-        android:gravity="center"
-        android:orientation="horizontal">
-
-    <TextView
-        android:id="@+id/txtview"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textColor="@color/black"
-        android:fontFamily="sans-serif"
-        android:text="Already have an account?  " />
-
-        <TextView
-            android:id="@+id/login_txt"
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent"
-            android:text="Log In"
-            android:fontFamily="sans-serif"
-            android:textColor="@color/black"
-            android:textStyle="bold" />
-
-    </LinearLayout>
-
 
 </RelativeLayout>

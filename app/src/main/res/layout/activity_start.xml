@@ -36,6 +36,7 @@
         android:layout_marginTop="5dp"
         android:gravity="center"
         android:lineSpacingExtra="8sp"
+        android:fontFamily="sans-serif"
         android:text="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor."
         android:textColor="#696F80"
         android:textSize="24sp" />
@@ -51,6 +52,7 @@
         android:layout_marginEnd="30dp"
         android:layout_marginRight="30dp"
         android:layout_marginBottom="30dp"
+        android:fontFamily="sans-serif"
         android:text="Sign Up"
         android:textColor="#005EFF"
         android:textSize="20sp"
@@ -70,6 +72,7 @@
         android:layout_marginRight="30dp"
         android:layout_marginBottom="30dp"
         android:text="Log In"
+        android:fontFamily="sans-serif"
         android:textColor="#005EFF"
         android:textSize="20sp"
         android:textStyle="bold" />

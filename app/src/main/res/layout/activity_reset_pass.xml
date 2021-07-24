@@ -24,9 +24,10 @@
         android:layout_marginTop="20dp"
         android:layout_marginEnd="10dp"
         android:layout_marginRight="10dp"
+        android:fontFamily="sans-serif-condensed"
         android:text="Reset Your Password"
         android:textColor="#005EFF"
-        android:textSize="34sp"
+        android:textSize="40sp"
         android:textStyle="bold" />
 
     <com.google.android.material.textfield.TextInputLayout
@@ -43,8 +44,10 @@
         app:boxStrokeColor="#005EFF"
         app:hintTextColor="#005EFF">
         <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/email_edittxt121"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:fontFamily="sans-serif"
             android:hint="Email"
             android:inputType="textEmailAddress"
             android:textCursorDrawable="@drawable/color_cursor"
@@ -62,6 +65,7 @@
         android:layout_marginEnd="30dp"
         android:layout_marginBottom="5dp"
         android:backgroundTint="#005EFF"
+        android:fontFamily="sans-serif"
         android:text="Reset password"
         android:textAllCaps="false"
         android:textColor="@color/white"
@@ -75,6 +79,7 @@
         android:layout_below="@+id/reset_btn"
         android:layout_alignParentEnd="true"
         android:layout_marginTop="10dp"
+        android:fontFamily="sans-serif"
         android:layout_marginStart="40dp"
         android:layout_marginEnd="40dp"
         android:textColor="@color/black"
