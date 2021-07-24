@@ -93,8 +93,9 @@ public class SignUpActivity extends AppCompatActivity{
                             if(radioButton.isChecked()){
                                 FirebaseUser firebaseUser = mAuth.getCurrentUser();
                                 String userid =firebaseUser.getUid();
-                                DatabaseReference myRef = database.getReference("Team Players").child(userid);
+                                DatabaseReference myRef = database.getReference("Users").child(userid);
                                 HashMap<String,String> hashMap = new HashMap<>();
+                                hashMap.put("Type","Team Player");
                                 hashMap.put("Name","Default");
                                 hashMap.put("Nationality","Default");
                                 hashMap.put("Type of Play","Default");
@@ -121,8 +122,9 @@ public class SignUpActivity extends AppCompatActivity{
                             else if(radioButton2.isChecked()){
                                 FirebaseUser firebaseUser = mAuth.getCurrentUser();
                                 String userid =firebaseUser.getUid();
-                                DatabaseReference myRef = database.getReference("Officials").child(userid);
+                                DatabaseReference myRef = database.getReference("Users").child(userid);
                                 HashMap<String,String> hashMap = new HashMap<>();
+                                hashMap.put("Type","Officials");
                                 hashMap.put("Name","Default");
                                 hashMap.put("Nationality","Default");
                                 hashMap.put("Role Type","Default");

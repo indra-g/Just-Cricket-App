@@ -55,11 +55,11 @@ public class InitialActivity2 extends AppCompatActivity {
                 String biobubblestatus="";
                 if(covidtest1.isChecked()){
                     covidhistory="Yes";
-                    biobubblestatus="15 days";
+                    biobubblestatus="Your are put to Quarantine!";
                 }
                 else{
                     covidhistory="No";
-                    biobubblestatus="0 days";
+                    biobubblestatus="Your are put to Bio Bubble!";
                 }
                 String name_txt=name_edittext12.getText().toString();
                 String nationality_txt=nationality_edittext1.getText().toString();
@@ -71,7 +71,7 @@ public class InitialActivity2 extends AppCompatActivity {
                     progress.show();
                     FirebaseUser firebaseUser = mAuth.getCurrentUser();
                     String userid = firebaseUser.getUid();
-                    DatabaseReference myRef = database.getReference("Officials").child(userid);
+                    DatabaseReference myRef = database.getReference("Users").child(userid);
                     HashMap<String, Object> map = new HashMap<>();
                     map.put("Name", name_txt);
                     map.put("Nationality", nationality_txt);
@@ -82,7 +82,8 @@ public class InitialActivity2 extends AppCompatActivity {
                         @Override
                         public void onComplete(@NonNull Task<Void> task) {
                             if(task.isSuccessful()){
-                                startActivity(new Intent(InitialActivity2.this, MainActivity.class));
+                                Intent intent=new Intent(InitialActivity2.this,OffcialsActivity.class);
+                                startActivity(intent);
                                 progress.dismiss();
                                 finish();
                             }

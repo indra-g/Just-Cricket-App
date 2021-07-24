@@ -7,7 +7,6 @@ import androidx.appcompat.widget.Toolbar;
 import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
@@ -16,8 +15,6 @@ import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.google.android.gms.tasks.OnCompleteListener;
-import com.google.android.gms.tasks.Task;
 import com.google.android.material.button.MaterialButton;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
@@ -27,8 +24,8 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
-public class MainActivity extends AppCompatActivity {
-    TextView name_txt, nationality_txt, tplay_txt, tname_txt, covid_txt, status, time_txt;
+public class OffcialsActivity extends AppCompatActivity {
+    TextView name_txt, nationality_txt, role_txt, covid_txt, status, time_txt;
     MaterialButton quarantine_done;
     ListView listview;
     FirebaseAuth mAuth;
@@ -47,7 +44,7 @@ public class MainActivity extends AppCompatActivity {
         super.onOptionsItemSelected(item);
         if (item.getItemId() == R.id.logout) {
             mAuth.signOut();
-            startActivity(new Intent(MainActivity.this, StartActivity.class));
+            startActivity(new Intent(OffcialsActivity.this, StartActivity.class));
             finish();
             return true;
         } else {
@@ -58,11 +55,10 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+        setContentView(R.layout.activity_offcials);
         name_txt = findViewById(R.id.name_txt);
         nationality_txt = findViewById(R.id.nationality_txt);
-        tplay_txt = findViewById(R.id.tplay_txt);
-        tname_txt = findViewById(R.id.tname_txt);
+        role_txt = findViewById(R.id.role_txt);
         covid_txt = findViewById(R.id.covid_txt);
         status = findViewById(R.id.status);
         quarantine_done = findViewById(R.id.quarantine_done);
@@ -85,8 +81,7 @@ public class MainActivity extends AppCompatActivity {
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 name_txt.setText(snapshot.child("Name").getValue().toString());
                 nationality_txt.append(snapshot.child("Nationality").getValue().toString());
-                tplay_txt.append(snapshot.child("Type of Play").getValue().toString());
-                tname_txt.append(snapshot.child("Team Name").getValue().toString());
+                role_txt.append(snapshot.child("Role Type").getValue().toString());
                 covid_txt.append(snapshot.child("Covid history").getValue().toString());
                 status.setText(snapshot.child("Bio bubble Status").getValue().toString());
                 progress.dismiss();
@@ -95,14 +90,13 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onCancelled(@NonNull DatabaseError error) {
                 progress.dismiss();
-                Toast.makeText(MainActivity.this, error.getMessage().toString(), Toast.LENGTH_SHORT).show();
+                Toast.makeText(OffcialsActivity.this, error.getMessage().toString(), Toast.LENGTH_SHORT).show();
             }
         });
-
         quarantine_done.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivity(new Intent(MainActivity.this,CovidTestsActivity.class));
+                startActivity(new Intent(OffcialsActivity.this,CovidTestsActivity.class));
                 finish();
             }
         });
