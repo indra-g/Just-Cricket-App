@@ -22,7 +22,8 @@
         android:gravity="center"
         android:text="Here Name"
         android:textColor="#005EFF"
-        android:textSize="40sp" />
+        android:textSize="40sp"
+        android:textStyle="bold" />
 
 
     <TextView

@@ -26,6 +26,7 @@
         android:layout_marginRight="30dp"
         android:fontFamily="sans-serif-condensed"
         android:gravity="center"
+        android:textStyle="bold"
         android:text="Enter your Covid result's during quarantine"
         android:textColor="#005EFF"
         android:textSize="30sp" />

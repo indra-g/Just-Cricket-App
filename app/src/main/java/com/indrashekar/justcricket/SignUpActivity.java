@@ -101,6 +101,7 @@ public class SignUpActivity extends AppCompatActivity{
                                 hashMap.put("Team Name","Default");
                                 hashMap.put("Covid history","Default");
                                 hashMap.put("Bio bubble Status","Default");
+                                hashMap.put("User id",userid);
                                 myRef.setValue(hashMap).addOnCompleteListener(SignUpActivity.this, new OnCompleteListener<Void>() {
                                     @Override
                                     public void onComplete(@NonNull Task<Void> task) {
@@ -122,6 +123,7 @@ public class SignUpActivity extends AppCompatActivity{
                                 String userid =firebaseUser.getUid();
                                 DatabaseReference myRef = database.getReference("Users").child(userid);
                                 HashMap<String,String> hashMap = new HashMap<>();
+                                hashMap.put("User id",userid);
                                 hashMap.put("Type","Officials");
                                 hashMap.put("Name","Default");
                                 hashMap.put("Nationality","Default");

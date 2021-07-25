@@ -4,18 +4,21 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".MainActivity">
+    tools:context=".ShowUserActivity">
 
-    <include
-        android:id="@+id/toolbar"
-        layout="@layout/bar_layout"
-        tools:ignore="InvalidId"/>
+    <ImageView
+        android:id="@+id/loginimg"
+        android:layout_width="150dp"
+        android:layout_height="150dp"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="20dp"
+        app:srcCompat="@drawable/showuser" />
 
     <TextView
         android:id="@+id/name_txt"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/toolbar"
+        android:layout_below="@+id/loginimg"
         android:layout_marginStart="30dp"
         android:layout_marginTop="20dp"
         android:layout_marginEnd="30dp"
@@ -39,10 +42,22 @@
         android:textSize="20sp" />
 
     <TextView
-        android:id="@+id/tplay_txt"
+        android:id="@+id/role_txt"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_below="@+id/nationality_txt"
+        android:textColor="@color/black"
+        android:text="Role Type -  "
+        android:layout_marginStart="30dp"
+        android:layout_marginEnd="30dp"
+        android:layout_marginTop="10dp"
+        android:textSize="20sp" />
+
+    <TextView
+        android:id="@+id/tplay_txt"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/role_txt"
         android:textColor="@color/black"
         android:text="Type of Play -  "
         android:layout_marginStart="30dp"
@@ -74,22 +89,12 @@
         android:layout_marginTop="10dp"
         android:textSize="20sp" />
 
-    <View
-        android:id="@+id/line"
-        android:layout_width="match_parent"
-        android:layout_height="3dp"
-        android:background="@color/black"
-        android:layout_below="@+id/covid_txt"
-        android:layout_marginStart="30dp"
-        android:layout_marginEnd="30dp"
-        android:layout_marginTop="20dp"/>
-
     <TextView
         android:id="@+id/status"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/line"
-        android:text="Your in Quarantine"
+        android:layout_below="@+id/covid_txt"
+        android:text="Currently in Quarantine"
         android:gravity="center"
         android:textSize="40sp"
         android:textColor="#005EFF"
@@ -97,28 +102,21 @@
         android:layout_marginEnd="30dp"
         android:layout_marginTop="20dp" />
 
-
-    <View
-        android:id="@+id/line1"
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/back_btn1"
         android:layout_width="match_parent"
-        android:layout_height="3dp"
-        android:background="@color/black"
+        android:layout_height="wrap_content"
         android:layout_below="@+id/status"
-        android:layout_marginStart="30dp"
-        android:layout_marginEnd="30dp"
-        android:layout_marginTop="20dp"/>
-
-    <ListView
-        android:id="@+id/listview"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_below="@id/line1"
-        android:layout_marginStart="30dp"
-        android:layout_marginLeft="30dp"
         android:layout_marginTop="20dp"
+        android:layout_marginStart="30dp"
         android:layout_marginEnd="30dp"
-        android:layout_marginRight="30dp"
-        android:layout_marginBottom="10dp" />
-
+        android:layout_marginBottom="5dp"
+        android:backgroundTint="#005EFF"
+        android:text="Go Back"
+        android:fontFamily="sans-serif"
+        android:textAllCaps="false"
+        android:textColor="@color/white"
+        android:textSize="16dp"
+        app:cornerRadius="20dp" />
 
 </RelativeLayout>

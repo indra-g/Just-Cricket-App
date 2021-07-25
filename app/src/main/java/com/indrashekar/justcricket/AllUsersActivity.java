@@ -2,8 +2,11 @@ package com.indrashekar.justcricket;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 import android.widget.Toast;
@@ -21,7 +24,7 @@ import java.util.List;
 public class AllUsersActivity extends AppCompatActivity {
     ListView listview;
     ArrayList<String> names;
-    ArrayList<String> status1;
+    ArrayList<String> userid;
     ArrayAdapter<String> adapter;
 
     @Override
@@ -30,21 +33,20 @@ public class AllUsersActivity extends AppCompatActivity {
         setContentView(R.layout.activity_all_users);
         listview=findViewById(R.id.listview);
         names=new ArrayList<>();
-        status1=new ArrayList<>();
+        userid=new ArrayList<>();
         DatabaseReference rootRef = FirebaseDatabase.getInstance().getReference();
         DatabaseReference usersdRef = rootRef.child("Users");
         names.clear();
-        status1.clear();
+        userid.clear();
         adapter= new ArrayAdapter(AllUsersActivity.this, android.R.layout.simple_list_item_1,names);
         ValueEventListener eventListener = new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
                 for (DataSnapshot ds : dataSnapshot.getChildren()) {
                     String name = ds.child("Name").getValue(String.class);
-                    String status= ds.child("Bio bubble Status").getValue(String.class);
-                    Log.d("TAG", name);
-                    Log.d("TAG",status);
+                    String uid= ds.child("User id").getValue(String.class);
                     names.add(name);
+                    userid.add(uid);
                     adapter.notifyDataSetChanged();
                 }
                 listview.setAdapter(adapter);
@@ -55,5 +57,14 @@ public class AllUsersActivity extends AppCompatActivity {
             }
         };
         usersdRef.addListenerForSingleValueEvent(eventListener);
+        listview.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                String uid=userid.get(position);
+                Intent intent=new Intent(AllUsersActivity.this,ShowUserActivity.class);
+                intent.putExtra("uid",uid);
+                startActivity(intent);
+            }
+        });
     }
 }
