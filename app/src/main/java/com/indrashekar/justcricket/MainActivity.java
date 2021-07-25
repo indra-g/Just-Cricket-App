@@ -4,6 +4,7 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 
+import android.annotation.SuppressLint;
 import android.app.ProgressDialog;
 import android.content.Intent;
 import android.content.res.ColorStateList;
@@ -46,14 +47,14 @@ public class MainActivity extends AppCompatActivity {
     public boolean onCreateOptionsMenu(Menu menu) {
         MenuInflater menuInflater = getMenuInflater();
         menuInflater.inflate(R.menu.main_menu, menu);
-        item= menu.findItem(R.id.upload);
+        item = menu.findItem(R.id.upload);
         return super.onCreateOptionsMenu(menu);
     }
 
     @Override
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
         super.onOptionsItemSelected(item);
-        switch (item.getItemId()){
+        switch (item.getItemId()) {
             case R.id.logout:
                 mAuth.signOut();
                 startActivity(new Intent(MainActivity.this, StartActivity.class));
@@ -96,51 +97,54 @@ public class MainActivity extends AppCompatActivity {
         String userid = firebaseUser.getUid();
         DatabaseReference mRef = database.getReference("Users").child(userid);
         mRef.addValueEventListener(new ValueEventListener() {
+            @SuppressLint("ResourceAsColor")
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 name_txt.setText(snapshot.child("Name").getValue().toString());
-                nationality_txt.setText("Nationality -  "+snapshot.child("Nationality").getValue().toString());
-                tplay_txt.setText("Type of Play -  "+snapshot.child("Type of Play").getValue().toString());
-                tname_txt.setText("Team name -  "+snapshot.child("Team Name").getValue().toString());
-                covid_txt.setText("Covid History -  "+snapshot.child("Covid history").getValue().toString());
+                nationality_txt.setText("Nationality -  " + snapshot.child("Nationality").getValue().toString());
+                tplay_txt.setText("Type of Play -  " + snapshot.child("Type of Play").getValue().toString());
+                tname_txt.setText("Team name -  " + snapshot.child("Team Name").getValue().toString());
+                covid_txt.setText("Covid History -  " + snapshot.child("Covid history").getValue().toString());
                 status.setText(snapshot.child("Bio bubble Status").getValue().toString());
-                if(status.getText().toString().equals("Your in Bio Bubble!")){
-                    item.setVisible(false);
+                item.setVisible(!status.getText().toString().equals("Your in Bio Bubble!"));
+                if(status.equals("Your in Bio Bubble!")){
+                    status.setTextColor(R.color.green);
                 }
                 else{
-                    item.setVisible(true);
+                    status.setTextColor(R.color.red);
                 }
             }
 
             @Override
             public void onCancelled(@NonNull DatabaseError error) {
                 progress.dismiss();
-                Toast.makeText(MainActivity.this, error.getMessage().toString(), Toast.LENGTH_SHORT).show();
+                Toast.makeText(MainActivity.this, error.getMessage(), Toast.LENGTH_SHORT).show();
             }
         });
-        listview=findViewById(R.id.listview);
-        names=new ArrayList<>();
-        status1=new ArrayList<>();
+        listview = findViewById(R.id.listview);
+        names = new ArrayList<>();
+        status1 = new ArrayList<>();
         DatabaseReference rootRef = FirebaseDatabase.getInstance().getReference();
         DatabaseReference usersdRef = rootRef.child("Users");
         names.clear();
         status1.clear();
-        adapter= new ArrayAdapter(MainActivity.this, android.R.layout.simple_list_item_1,names);
+        adapter = new ArrayAdapter(MainActivity.this, android.R.layout.simple_list_item_1, names);
         ValueEventListener eventListener = new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
                 for (DataSnapshot ds : dataSnapshot.getChildren()) {
                     String name = ds.child("Name").getValue(String.class);
-                    String status= ds.child("Bio bubble Status").getValue(String.class);
+                    String status = ds.child("Bio bubble Status").getValue(String.class);
                     names.add(name);
                     adapter.notifyDataSetChanged();
                 }
                 listview.setAdapter(adapter);
                 progress.dismiss();
             }
+
             @Override
             public void onCancelled(DatabaseError databaseError) {
-                Toast.makeText(MainActivity.this,databaseError.getMessage(), Toast.LENGTH_SHORT).show();;
+                Toast.makeText(MainActivity.this, databaseError.getMessage(), Toast.LENGTH_SHORT).show();
             }
         };
         usersdRef.addListenerForSingleValueEvent(eventListener);

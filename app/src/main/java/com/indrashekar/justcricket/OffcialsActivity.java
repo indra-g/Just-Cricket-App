@@ -4,6 +4,7 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 
+import android.annotation.SuppressLint;
 import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.Bundle;
@@ -91,6 +92,7 @@ public class OffcialsActivity extends AppCompatActivity {
         String userid = firebaseUser.getUid();
         DatabaseReference mRef = database.getReference("Users").child(userid);
         mRef.addValueEventListener(new ValueEventListener() {
+            @SuppressLint("ResourceAsColor")
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 name_txt.setText(snapshot.child("Name").getValue().toString());
@@ -98,18 +100,19 @@ public class OffcialsActivity extends AppCompatActivity {
                 role_txt.setText("Role Type -  "+snapshot.child("Role Type").getValue().toString());
                 covid_txt.setText("Covid History -  "+snapshot.child("Covid history").getValue().toString());
                 status.setText(snapshot.child("Bio bubble Status").getValue().toString());
-                if(status.getText().toString().equals("Your in Bio Bubble!")){
-                    item.setVisible(false);
+                item.setVisible(!status.getText().toString().equals("Your in Bio Bubble!"));
+                if(status.equals("Your in Bio Bubble!")){
+                    status.setTextColor(R.color.green);
                 }
                 else{
-                    item.setVisible(true);
+                    status.setTextColor(R.color.red);
                 }
             }
 
             @Override
             public void onCancelled(@NonNull DatabaseError error) {
                 progress.dismiss();
-                Toast.makeText(OffcialsActivity.this, error.getMessage().toString(), Toast.LENGTH_SHORT).show();
+                Toast.makeText(OffcialsActivity.this, error.getMessage(), Toast.LENGTH_SHORT).show();
             }
         });
         listview=findViewById(R.id.listview);
@@ -134,7 +137,7 @@ public class OffcialsActivity extends AppCompatActivity {
             }
             @Override
             public void onCancelled(DatabaseError databaseError) {
-                Toast.makeText(OffcialsActivity.this,databaseError.getMessage(), Toast.LENGTH_SHORT).show();;
+                Toast.makeText(OffcialsActivity.this,databaseError.getMessage(), Toast.LENGTH_SHORT).show();
             }
         };
         usersdRef.addListenerForSingleValueEvent(eventListener);

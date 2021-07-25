@@ -51,7 +51,7 @@ public class AllUsersActivity extends AppCompatActivity {
             }
             @Override
             public void onCancelled(DatabaseError databaseError) {
-                Toast.makeText(AllUsersActivity.this,databaseError.getMessage(), Toast.LENGTH_SHORT).show();;
+                Toast.makeText(AllUsersActivity.this,databaseError.getMessage(), Toast.LENGTH_SHORT).show();
             }
         };
         usersdRef.addListenerForSingleValueEvent(eventListener);
