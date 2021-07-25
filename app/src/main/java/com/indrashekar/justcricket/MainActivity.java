@@ -13,6 +13,7 @@ import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.ArrayAdapter;
 import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -28,6 +29,8 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
+import java.util.ArrayList;
+
 public class MainActivity extends AppCompatActivity {
     TextView name_txt, nationality_txt, tplay_txt, tname_txt, covid_txt, status;
     ListView listview;
@@ -35,6 +38,9 @@ public class MainActivity extends AppCompatActivity {
     FirebaseDatabase database;
     ProgressDialog progress;
     private MenuItem item;
+    ArrayList<String> names;
+    ArrayList<String> status1;
+    ArrayAdapter<String> adapter;
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
@@ -54,6 +60,12 @@ public class MainActivity extends AppCompatActivity {
                 return true;
             case R.id.upload:
                 startActivity(new Intent(MainActivity.this, CovidTestsActivity.class));
+                return true;
+            case R.id.allsuers:
+                startActivity(new Intent(MainActivity.this, AllUsersActivity.class));
+                return true;
+            case R.id.edit:
+                startActivity(new Intent(MainActivity.this, EditProfileActivity.class));
                 return true;
         }
         return false;
@@ -98,7 +110,6 @@ public class MainActivity extends AppCompatActivity {
                 else{
                     item.setVisible(true);
                 }
-                progress.dismiss();
             }
 
             @Override
@@ -107,5 +118,31 @@ public class MainActivity extends AppCompatActivity {
                 Toast.makeText(MainActivity.this, error.getMessage().toString(), Toast.LENGTH_SHORT).show();
             }
         });
+        listview=findViewById(R.id.listview);
+        names=new ArrayList<>();
+        status1=new ArrayList<>();
+        DatabaseReference rootRef = FirebaseDatabase.getInstance().getReference();
+        DatabaseReference usersdRef = rootRef.child("Users");
+        names.clear();
+        status1.clear();
+        adapter= new ArrayAdapter(MainActivity.this, android.R.layout.simple_list_item_1,names);
+        ValueEventListener eventListener = new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                for (DataSnapshot ds : dataSnapshot.getChildren()) {
+                    String name = ds.child("Name").getValue(String.class);
+                    String status= ds.child("Bio bubble Status").getValue(String.class);
+                    names.add(name);
+                    adapter.notifyDataSetChanged();
+                }
+                listview.setAdapter(adapter);
+                progress.dismiss();
+            }
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+                Toast.makeText(MainActivity.this,databaseError.getMessage(), Toast.LENGTH_SHORT).show();;
+            }
+        };
+        usersdRef.addListenerForSingleValueEvent(eventListener);
     }
 }

@@ -7,7 +7,7 @@
     tools:context=".SignUpActivity">
 
     <ImageView
-        android:id="@+id/signup"
+        android:id="@+id/allusersimg"
         android:layout_width="150dp"
         android:layout_height="150dp"
         android:layout_centerHorizontal="true"
@@ -18,7 +18,7 @@
         android:id="@+id/textView3"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@id/signup"
+        android:layout_below="@id/allusersimg"
         android:layout_marginStart="30dp"
         android:layout_marginLeft="30dp"
         android:layout_marginTop="20dp"
