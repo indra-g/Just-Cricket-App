@@ -66,14 +66,12 @@ public class LoginActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 startActivity(new Intent(LoginActivity.this,SignUpActivity.class));
-                finish();
             }
         });
         forget_pass.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 startActivity(new Intent(LoginActivity.this,ResetPassActivity.class));
-                finish();
             }
         });
     }
@@ -91,12 +89,10 @@ public class LoginActivity extends AppCompatActivity {
                             if(String.valueOf(task.getResult().getValue()).equals("Team Player")){
                                 startActivity(new Intent(LoginActivity.this,MainActivity.class));
                                 progress.dismiss();
-                                finish();
                             }
                             else{
                                 startActivity(new Intent(LoginActivity.this,OffcialsActivity.class));
                                 progress.dismiss();
-                                finish();
                             }
                         }
                     });

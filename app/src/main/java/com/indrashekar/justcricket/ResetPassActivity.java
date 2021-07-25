@@ -47,7 +47,6 @@ public class ResetPassActivity extends AppCompatActivity {
                 if(task.isSuccessful()){
                     Toast.makeText(ResetPassActivity.this, "Check your Email", Toast.LENGTH_SHORT).show();
                     startActivity(new Intent(ResetPassActivity.this,LoginActivity.class));
-                    finish();
                 }
                 else{
                     Toast.makeText(ResetPassActivity.this, task.getException().toString(), Toast.LENGTH_SHORT).show();

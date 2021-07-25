@@ -34,7 +34,7 @@
         android:text="Nationality -  "
         android:layout_marginStart="30dp"
         android:layout_marginEnd="30dp"
-        android:layout_marginTop="10dp"
+        android:layout_marginTop="20dp"
         android:textSize="20sp" />
 
     <TextView
@@ -96,30 +96,13 @@
         android:layout_marginEnd="30dp"
         android:layout_marginTop="20dp" />
 
-    <com.google.android.material.button.MaterialButton
-        android:id="@+id/quarantine_done"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/status"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="10dp"
-        android:layout_marginStart="30dp"
-        android:layout_marginEnd="30dp"
-        android:layout_marginBottom="5dp"
-        android:backgroundTint="#005EFF"
-        android:text="Upload your Covid Tests"
-        android:fontFamily="sans-serif"
-        android:textAllCaps="false"
-        android:textColor="@color/white"
-        android:textSize="16dp"
-        app:cornerRadius="20dp" />
 
     <View
         android:id="@+id/line1"
         android:layout_width="match_parent"
         android:layout_height="3dp"
         android:background="#005EFF"
-        android:layout_below="@+id/quarantine_done"
+        android:layout_below="@+id/status"
         android:layout_marginStart="30dp"
         android:layout_marginEnd="30dp"
         android:layout_marginTop="20dp"/>

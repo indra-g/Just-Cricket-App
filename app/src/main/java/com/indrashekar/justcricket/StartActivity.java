@@ -43,12 +43,10 @@ public class StartActivity extends AppCompatActivity {
                     if(String.valueOf(task.getResult().getValue()).equals("Team Player")){
                         startActivity(new Intent(StartActivity.this,MainActivity.class));
                         progress.dismiss();
-                        finish();
                     }
                     else{
                         startActivity(new Intent(StartActivity.this,OffcialsActivity.class));
                         progress.dismiss();
-                        finish();
                     }
                 }
             });
@@ -67,14 +65,12 @@ public class StartActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 startActivity(new Intent(StartActivity.this,SignUpActivity.class));
-                finish();
             }
         });
         login_txtview.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 startActivity(new Intent(StartActivity.this,LoginActivity.class));
-                finish();
             }
         });
     }

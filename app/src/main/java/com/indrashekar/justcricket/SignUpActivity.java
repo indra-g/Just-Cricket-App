@@ -59,7 +59,6 @@ public class SignUpActivity extends AppCompatActivity{
             @Override
             public void onClick(View v) {
                 startActivity(new Intent(SignUpActivity.this,LoginActivity.class));
-                finish();
             }
         });
         signup_btn.setOnClickListener(new View.OnClickListener() {
@@ -110,7 +109,6 @@ public class SignUpActivity extends AppCompatActivity{
                                             intent.putExtra("name",name);
                                             startActivity(intent);
                                             progress.dismiss();
-                                            finish();
                                         }
                                         else{
                                             progress.dismiss();
@@ -138,7 +136,6 @@ public class SignUpActivity extends AppCompatActivity{
                                             intent.putExtra("name",name);
                                             startActivity(intent);
                                             progress.dismiss();
-                                            finish();
                                         }
                                         else{
                                             progress.dismiss();

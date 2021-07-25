@@ -11,7 +11,9 @@
         android:roundIcon="@mipmap/app_icon"
         android:supportsRtl="true"
         android:theme="@style/Theme.MaterialComponents.Light.NoActionBar">
-        <activity android:name=".CovidTestsActivity"></activity>
+        <activity android:name=".EditProfileActivity"></activity>
+        <activity android:name=".AllUsersActivity" />
+        <activity android:name=".CovidTestsActivity" />
         <activity android:name=".OffcialsActivity" />
         <activity android:name=".InitialActivity2" />
         <activity android:name=".InitialActivity" />

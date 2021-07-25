@@ -6,6 +6,7 @@ import androidx.appcompat.widget.Toolbar;
 
 import android.app.ProgressDialog;
 import android.content.Intent;
+import android.content.res.ColorStateList;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.Menu;
@@ -28,31 +29,34 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
 public class MainActivity extends AppCompatActivity {
-    TextView name_txt, nationality_txt, tplay_txt, tname_txt, covid_txt, status, time_txt;
-    MaterialButton quarantine_done;
+    TextView name_txt, nationality_txt, tplay_txt, tname_txt, covid_txt, status;
     ListView listview;
     FirebaseAuth mAuth;
     FirebaseDatabase database;
     ProgressDialog progress;
+    private MenuItem item;
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         MenuInflater menuInflater = getMenuInflater();
         menuInflater.inflate(R.menu.main_menu, menu);
+        item= menu.findItem(R.id.upload);
         return super.onCreateOptionsMenu(menu);
     }
 
     @Override
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
         super.onOptionsItemSelected(item);
-        if (item.getItemId() == R.id.logout) {
-            mAuth.signOut();
-            startActivity(new Intent(MainActivity.this, StartActivity.class));
-            finish();
-            return true;
-        } else {
-            return false;
+        switch (item.getItemId()){
+            case R.id.logout:
+                mAuth.signOut();
+                startActivity(new Intent(MainActivity.this, StartActivity.class));
+                return true;
+            case R.id.upload:
+                startActivity(new Intent(MainActivity.this, CovidTestsActivity.class));
+                return true;
         }
+        return false;
     }
 
     @Override
@@ -65,7 +69,6 @@ public class MainActivity extends AppCompatActivity {
         tname_txt = findViewById(R.id.tname_txt);
         covid_txt = findViewById(R.id.covid_txt);
         status = findViewById(R.id.status);
-        quarantine_done = findViewById(R.id.quarantine_done);
         listview = findViewById(R.id.listview);
         mAuth = FirebaseAuth.getInstance();
         database = FirebaseDatabase.getInstance();
@@ -76,7 +79,7 @@ public class MainActivity extends AppCompatActivity {
         progress.show();
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
-        getSupportActionBar().setTitle("Home Screen");
+        getSupportActionBar().setTitle("Just Cricket");
         FirebaseUser firebaseUser = mAuth.getCurrentUser();
         String userid = firebaseUser.getUid();
         DatabaseReference mRef = database.getReference("Users").child(userid);
@@ -84,11 +87,17 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 name_txt.setText(snapshot.child("Name").getValue().toString());
-                nationality_txt.append(snapshot.child("Nationality").getValue().toString());
-                tplay_txt.append(snapshot.child("Type of Play").getValue().toString());
-                tname_txt.append(snapshot.child("Team Name").getValue().toString());
-                covid_txt.append(snapshot.child("Covid history").getValue().toString());
+                nationality_txt.setText("Nationality -  "+snapshot.child("Nationality").getValue().toString());
+                tplay_txt.setText("Type of Play -  "+snapshot.child("Type of Play").getValue().toString());
+                tname_txt.setText("Team name -  "+snapshot.child("Team Name").getValue().toString());
+                covid_txt.setText("Covid History -  "+snapshot.child("Covid history").getValue().toString());
                 status.setText(snapshot.child("Bio bubble Status").getValue().toString());
+                if(status.getText().toString().equals("Your in Bio Bubble!")){
+                    item.setVisible(false);
+                }
+                else{
+                    item.setVisible(true);
+                }
                 progress.dismiss();
             }
 
@@ -96,14 +105,6 @@ public class MainActivity extends AppCompatActivity {
             public void onCancelled(@NonNull DatabaseError error) {
                 progress.dismiss();
                 Toast.makeText(MainActivity.this, error.getMessage().toString(), Toast.LENGTH_SHORT).show();
-            }
-        });
-
-        quarantine_done.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                startActivity(new Intent(MainActivity.this,CovidTestsActivity.class));
-                finish();
             }
         });
     }

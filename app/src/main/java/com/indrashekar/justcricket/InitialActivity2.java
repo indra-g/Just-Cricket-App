@@ -55,11 +55,11 @@ public class InitialActivity2 extends AppCompatActivity {
                 String biobubblestatus="";
                 if(covidtest1.isChecked()){
                     covidhistory="Yes";
-                    biobubblestatus="Your are put to Quarantine!";
+                    biobubblestatus="Your in Quarantine!";
                 }
                 else{
                     covidhistory="No";
-                    biobubblestatus="Your are put to Bio Bubble!";
+                    biobubblestatus="Your in Bio Bubble!";
                 }
                 String name_txt=name_edittext12.getText().toString();
                 String nationality_txt=nationality_edittext1.getText().toString();
@@ -85,7 +85,6 @@ public class InitialActivity2 extends AppCompatActivity {
                                 Intent intent=new Intent(InitialActivity2.this,OffcialsActivity.class);
                                 startActivity(intent);
                                 progress.dismiss();
-                                finish();
                             }
                             else{
                                 progress.dismiss();

@@ -2,6 +2,21 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto">
     <item
+        android:id="@+id/upload"
+        android:title="Upload your Covid tests"
+        app:showAsAction="never" />
+
+    <item
+        android:id="@+id/allsuers"
+        android:title="See all users"
+        app:showAsAction="never" />
+
+    <item
+        android:id="@+id/edit"
+        android:title="Edit my profile"
+        app:showAsAction="never" />
+
+    <item
         android:id="@+id/logout"
         android:title="Logout"
         app:showAsAction="never" />
